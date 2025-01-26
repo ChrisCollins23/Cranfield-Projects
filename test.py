@@ -27,7 +27,7 @@ if game_choice == 1:
         data = pd.read_excel("lotonumbers.xlsx")
 
         # Split the data into features (X) and target (y)
-        X = data[['1st_number', '2nd_number', '3rd_number', '4th_number', '5th_number', '6th_number']]
+        X = data[['N1', 'N2', 'N3', 'N4', 'N5', 'N6']]  # N = Number of ball
         y = data.iloc[:, 1:]
 
         # Train a Random Forest Regression model
@@ -37,12 +37,12 @@ if game_choice == 1:
 
         # Generate a new set of random features for prediction
         new_data = pd.DataFrame({
-            "1st_number": [randint(1, 59) for _ in range(100)], # 100 random numbers between 1 and 59
-            "2nd_number": [randint(1, 59) for _ in range(100)], 
-            "3rd_number": [randint(1, 59) for _ in range(100)],
-            "4th_number": [randint(1, 59) for _ in range(100)],
-            "5th_number": [randint(1, 59) for _ in range(100)],
-            "6th_number": [randint(1, 59) for _ in range(100)], # 100 random numbers between 1 and 59
+            "N1": [randint(1, 59) for _ in range(100)], # 100 random numbers between 1 and 59, all arrays must be same size
+            "N2": [randint(1, 59) for _ in range(100)], # all arrays must be same size
+            "N3": [randint(1, 59) for _ in range(100)],
+            "N4": [randint(1, 59) for _ in range(100)],
+            "N5": [randint(1, 59) for _ in range(100)],
+            "N6": [randint(1, 59) for _ in range(100)], 
         })
 
         # Use the trained model to predict the next 6 numbers for each set of features
